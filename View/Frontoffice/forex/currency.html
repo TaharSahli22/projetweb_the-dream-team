@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Currency Exchange</title>
+        <script src="currency.js"></script>
+        <link rel="stylesheet" href="currency.css">
+        <script src="https://kit.fontawesome.com/7c69e4f56c.js" crossorigin="anonymous"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Unbounded&amp;display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="header">
+            <h1>Foreign Exchange</h1>
+            <br>
+        </div>
+        <center>
+            <div class="heading">
+                <h1>Enter The Currency</h1>
+            </div>
+            <div class="example">
+                <p>eg: USD, GBP, AED, JPY, EUR, SAR</p>
+            </div>
+            <div class="forms">
+                <form id = "fiat-currency" autocomplete="off">
+                        <input id="amt" placeholder="Enter the amount" type="number">
+                        <input id="from" placeholder="From" type="text">
+                        <input id="currency" placeholder="To" type="text">
+                        <br>
+                    <input id="submitbtn" type="submit" value="Convert">
+                    <br>
+                    
+                </form>
+            </div>    
+            <div id="result">
+
+            </div>
+            
+            <div>
+                <input type="checkbox" class="checkbox" id="checkbox">
+              <label for="checkbox" class="label">
+                <i class="fas fa-moon"></i>
+                <i class='fas fa-sun'></i>
+                <div class='ball'>
+              </label>
+            </div>
+
+        </center>
+    </body>
+</html>
