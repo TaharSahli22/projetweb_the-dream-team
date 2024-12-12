@@ -25,71 +25,85 @@ try {
     <title>Client List</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Style pour la page */
-        body {
+         body {
             font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
+            background-color: #000; /* Black background */
+            color: #fff; /* White text */
             padding: 20px;
         }
 
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            background-color: white;
+            background-color: #222; /* Darker container background for contrast */
             padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             border-radius: 8px;
         }
 
         h2 {
             text-align: center;
             margin-bottom: 20px;
+            color: #28a745; /* Green header */
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
+            background-color: #333; /* Dark table background */
+            color: #fff; /* White text for table */
         }
 
         th, td {
             padding: 10px;
             text-align: left;
-            border: 1px solid #ccc;
+            border: 1px solid #444; /* Subtle border for better readability */
         }
 
         th {
-            background-color: #007bff;
+            background-color: #28a745; /* Green header background */
             color: white;
         }
 
         .btn {
             padding: 6px 12px;
-            background-color: #007bff;
+            background-color: #28a745; /* Green buttons */
             color: white;
             border: none;
             border-radius: 4px;
             text-decoration: none;
+            cursor: pointer;
         }
 
         .btn-danger {
-            background-color: #dc3545;
+            background-color: #c82333; /* Red for danger button */
         }
 
         .btn-warning {
-            background-color: #ffc107;
+            background-color: #e0a800; /* Yellow for warning button */
         }
-
+        .btn-b {
+            background-color:#0000ff; /* Yellow for warning button */
+        }
         .btn:hover {
-            opacity: 0.8;
+            opacity: 0.9; /* Slight dimming on hover */
         }
 
         .btn-danger:hover {
-            background-color: #c82333;
+            background-color: #a71d2a; /* Darker red on hover */
         }
 
         .btn-warning:hover {
-            background-color: #e0a800;
+            background-color: #d39e00; /* Darker yellow on hover */
+        }
+
+        .btn-secondary {
+            background-color: #6c757d; /* Gray for secondary button */
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268; /* Darker gray on hover */
         }
     </style>
 </head>
@@ -110,6 +124,8 @@ try {
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email</th>
+                <th>Status</th>
+                <th>Banned until</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -121,12 +137,25 @@ try {
                         <td><?php echo htmlspecialchars($client['Name']); ?></td>
                         <td><?php echo htmlspecialchars($client['Last_Name']); ?></td>
                         <td><?php echo htmlspecialchars($client['email']); ?></td>
+                        <td><?php echo htmlspecialchars($client['status']); ?></td>
+                        <td><?php echo htmlspecialchars($client['ban_until']); ?></td>
                         <td>
                             <!-- Modify Button -->
                             <a href="modify.php?id=<?php echo $client['id']; ?>" class="btn btn-warning">Modify</a>
 
                             <!-- Delete Button with confirmation -->
                             <a href="?confirmDelete=1&id=<?php echo $client['id']; ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this client?');">Delete</a>
+                            <!-- banne Button with confirmation -->
+                            
+                            <?php if ($client['status'] === 'banned'): ?>
+                                <!-- Show Cancel Ban button if client is banned -->
+                                <a href="cancel_ban.php?id=<?php echo $client['id']; ?>" class="btn btn-b">Cancel</a>
+                            <?php else: ?>
+                                <!-- Show Ban button if client is active -->
+                                <a href="ban.php?id=<?php echo $client['id']; ?>" class="btn btn-danger">Ban</a>
+                            <?php endif; ?>
+                        
+
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -139,6 +168,7 @@ try {
     </table>
 
     <a href="../front_office/sig_in.php" class="btn">Add New Client</a>
+    <a href="index.php" class="btn">back to dashboard</a>
 </div>
 
 <?php
