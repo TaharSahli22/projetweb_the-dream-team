@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+   
+    <div class="gemini-chatbot" id="chatbot"></div>
+      <!-- Header Greetings -->
+      <header class="header hide-header">
+        <div class="header__title">Hello, there</div>
+        <div class="header__subtitle">How can I help you today?</div>
+
+        <!-- Suggestion List -->
+        <ul class="header__suggestion-list">
+          <!-- 1 -->
+          <li class="header__suggestion">
+            <p class="suggestion__text">
+              Help me plan a game night with my friends under $100
+            </p>
+            <img src="Svgs/write.svg" class="icon icon-write" />
+          </li>
+          <!-- 2 -->
+          <li class="header__suggestion">
+            <p class="suggestion__text">
+              What are the best tips to improve my public speaking skills?
+            </p>
+            <img src="Svgs/lightbulb.svg" class="icon icon-lightbulb" />
+          </li>
+          <!-- 3 -->
+          <li class="header__suggestion">
+            <p class="suggestion__text">
+              Can you help me find the latest news on web development?
+            </p>
+            <img src="Svgs/Explore.svg" class="icon icon-explore" />
+          </li>
+          <!-- 4 -->
+          <li class="header__suggestion">
+            <p class="suggestion__text">
+              Write JS code to to sum all elements in an array.
+            </p>
+            <img src="Svgs/code.svg" class="icon icon-code" />
+          </li>
+        </ul>
+      </header>
+      <!-- Chat List -->
+      <div class="chat chat-list"></div>
+
+      <!-- Typing area -->
+      <div class="typing-area">
+        <form action="#" class="typing-area__form">
+          <div class="typing-area__form--input-wrapper">
+            <input type="text" class="typing-area__form--input" />
+
+            <!-- icons -->
+            <button class="typing-area__form--btn">
+              <img src="Svgs/Send.svg" class="icon icon-send" />
+            </button>
+          </div>
+          <!--  -->
+          <div class="typing-area__action-btns">
+            <img src="Svgs/Lightmode.svg" / class="icon icon-lightmode"
+            id="theme"> <img src="Svgs/delete.svg" class="icon icon-delete"
+            id="delete" / >
+          </div>
+        </form>
+        <p class="disclaimer-text">
+          Gemini may display inaccurate info, including about people , so
+          double-check its reponse.
+        </p>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -27,7 +27,8 @@ $reponseController = new ReponseController();
                 NULL,
                 new DateTime($_POST['date_reponse']), 
                 $_POST['reponse'],
-                $_POST['id_reclamations']
+                $_POST['id_reclamations'],
+                NULL
             );
 
            
@@ -310,12 +311,10 @@ $reponseController = new ReponseController();
                                     <li class="breadcrumb-item active" aria-current="page">Library</li>
                                 </ol>
                             </nav>
-                        </div>
+                            </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
+           
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
@@ -343,7 +342,7 @@ $reponseController = new ReponseController();
 
 
 
-
+   
 
     <div class="container">
     <div class="search-container">
@@ -383,10 +382,14 @@ function searchReclamations() {
                     echo '<p><strong>Email : </strong>' . htmlspecialchars($reclamation['email']) . '</p>';
                     echo '<p><strong>Date : </strong>' . htmlspecialchars($reclamation['dates']) . '</p>';
                     echo '<p><strong>message : </strong>' . htmlspecialchars($reclamation['messages']) . '</p>';
+                    if (!empty($reclamation['voice_file_path']) && file_exists($reclamation['voice_file_path'])) {
+                        echo "<audio controls><source src='" . htmlspecialchars($reclamation['voice_file_path']) . "' type='audio/mpeg'></audio><br>";
+                    }
                     echo '<button id="openPopup-' . $reclamation['id'] . '" class="openPopupBtn">Reply</button>';
 echo '<a href="deleteReclamation.php?id=' . $reclamation['id'] . '" class="btn">Delete</a>';
 
 echo '</div>';
+
 ?>
 <div class="popup" id="popup-<?php echo $reclamation['id']; ?>">
     <div class="popup-content">

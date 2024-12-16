@@ -5,18 +5,20 @@ class reponse {
     private ?DateTime $date_reponse;
     private ?string $reponse;
     private ?int $id_reclamations;
+    private ?int $evaluation;
 
     public function __construct(
         ?int $id,
         ?DateTime $date_reponse,
         ?string $reponse,
         ?int $id_reclamations,
-        
+        ?int $evaluation
     ) {
         $this->id= $id;
         $this->date_reponse = $date_reponse;
         $this->reponse= $reponse;
         $this->id_reclamations = $id_reclamations;
+        $this->evaluation = $evaluation;
         
     }
 
@@ -51,6 +53,13 @@ class reponse {
 
     public function setId_reclamations(?int $id_reclamations): void {
         $this->id_reclamations = $id_reclamations;
+    }
+    public function getEvaluation(): ?int {
+        return $this->evaluation;
+    }
+
+    public function setEvaluation(?int $evaluation): void {
+        $this->evaluation = $evaluation;
     }
 }
 ?>

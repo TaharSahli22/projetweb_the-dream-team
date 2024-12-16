@@ -19,7 +19,17 @@ $reclamationController = new ReclamationController();
             !empty($_POST["nom"]) && !empty($_POST["prenom"]) && !empty($_POST["telephone"]) &&
             !empty($_POST["email"]) && !empty($_POST["dates"]) && !empty($_POST["messages"])
         ) {
-            
+            if (!empty($_POST['recordedVoice'])) {
+                $audio_data = $_POST['recordedVoice'];
+                $audio_data = explode(',', $audio_data);
+                $decoded_audio = base64_decode($audio_data[1]);
+                
+                $voice_file_path = '../../uploads/voice/' . uniqid() . '.wav';
+                if (!is_dir('uploads/voice')) {
+                    mkdir('uploads/voice', 0777, true);
+                }file_put_contents($voice_file_path, $decoded_audio);
+        
+            }
             $reclamation = new reclamation(
                 NULL,
                 $_POST['nom'],
@@ -27,7 +37,8 @@ $reclamationController = new ReclamationController();
                 $_POST['telephone'],
                 $_POST['email'],
                 new DateTime($_POST['dates']), 
-                $_POST['messages']
+                $_POST['messages'],
+                $voice_file_path
             );
 
            
@@ -249,8 +260,61 @@ $reclamationController = new ReclamationController();
                                       <label for="messages">Message</label>
                                       <span id="messages_error"></span><br>
                                   </div>
-
+                               <!-- Audio Recording Controls -->
+    <button class="btn btn-primary" type="button" id="recordBtn" onclick="startRecording()">Start Recording</button>
+    <button class="btn btn-primary" type="button" id="stopBtn" onclick="stopRecording()" disabled>Stop Recording</button>
+    <audio id="audioPlayer" controls></audio>
+    
+    <input type="hidden" id="recordedVoice" name="recordedVoice">
                               </div>
+                              <script>
+    let mediaRecorder;
+    let audioChunks = [];
+
+    function startRecording() {
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ audio: true })
+                .then(stream => {
+                    mediaRecorder = new MediaRecorder(stream);
+                    audioChunks = []; // Clear previous recordings
+                    
+                    mediaRecorder.ondataavailable = event => {
+                        audioChunks.push(event.data);
+                    };
+
+                    mediaRecorder.onstop = () => {
+                        const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                        const audioUrl = URL.createObjectURL(audioBlob);
+                        document.getElementById('audioPlayer').src = audioUrl;
+
+                        // Convert the Blob to Base64 to include it in the form submission
+                        const reader = new FileReader();
+                        reader.onload = () => {
+                            document.getElementById('recordedVoice').value = reader.result;
+                        };
+                        reader.readAsDataURL(audioBlob);
+                    };
+
+                    mediaRecorder.start();
+                    document.getElementById('stopBtn').disabled = false;
+                    document.getElementById('recordBtn').disabled = true;
+                })
+                .catch(err => {
+                    console.error('Error accessing microphone: ', err);
+                });
+        } else {
+            alert("Your browser doesn't support audio recording.");
+        }
+    }
+
+    function stopRecording() {
+        if (mediaRecorder) {
+            mediaRecorder.stop();
+            document.getElementById('stopBtn').disabled = true;
+            document.getElementById('recordBtn').disabled = false;
+        }
+    }
+</script>
                               <div class="col-12">
                                   <button type="submit" class="btn btn-primary w-100 py-3" onClick="validerFormulaire()" >Send Message</button>
                               </div>
@@ -270,7 +334,10 @@ $reclamationController = new ReclamationController();
   </div>
 </div>
 
-
+<!-- IA Assistant Icon -->
+<a href="./chatbot/index.html" target="_blank" id="ia-assistant-icon" class="position-fixed bottom-0 start-50 translate-middle-x m-4">
+    <i class="fas fa-robot fa-3x text-primary"></i>
+</a>
  <!-- JavaScript Libraries -->
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>

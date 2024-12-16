@@ -8,7 +8,7 @@ class reclamation {
     private ?string $email;
     private ?DateTime $dates;
     private ?string $messages;
-
+    private ?string $voice_file_path;
     // Constructor
     public function __construct(
         ?int $id,
@@ -17,7 +17,8 @@ class reclamation {
         ?int $telephone,
         ?string $email,
         ?DateTime $dates, 
-        ?string $messages
+        ?string $messages,
+        ?string $voice_file_path
     ) {
         $this->id = $id;
         $this->nom = $nom;
@@ -26,6 +27,7 @@ class reclamation {
         $this->email = $email;
         $this->dates = $dates;
         $this->messages = $messages;
+        $this->voice_file_path = $voice_file_path;
     }
 
     // Getters and Setters
@@ -84,6 +86,13 @@ class reclamation {
 
     public function setMessages(?string $messages): void {
         $this->messages = $messages;
+    }
+    public function getvoice_file_path(): ?string {
+        return $this->voice_file_path;
+    }
+
+    public function setvoice_file_path(?string $voice_file_path): void {
+        $this->voice_file_path = $voice_file_path;
     }
 }
 ?>

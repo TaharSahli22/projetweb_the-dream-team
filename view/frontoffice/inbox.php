@@ -148,7 +148,10 @@ $reclamation = $reclamationController->listReclamation();
                                   </tbody>
                             </table>
 
-
+<!-- IA Assistant Icon 
+<a href="./chatbot/index.html" target="_blank" id="ia-assistant-icon" class="position-fixed bottom-0 start-50 translate-middle-x m-4">
+    <i class="fas fa-robot fa-3x text-primary"></i>
+</a>-->
  <!-- JavaScript Libraries -->
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>

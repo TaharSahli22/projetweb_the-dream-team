@@ -1,0 +1,14 @@
+{
+  "name": "gemini-chatabot",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "compile:sass": "node-sass main.scss style.css -w"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "node-sass": "^9.0.0"
+  }
+}

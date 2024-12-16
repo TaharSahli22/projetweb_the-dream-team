@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="gemini-website Website">
+      <!-- Header -->
+      <header class="Website__header">
+        <h1 class="Website__header--heading">Gemini</h1>
+        <div class="Website__header--points">
+          <ul class="Website__header--list">
+            <li class="Website__header--list-item">Try Gemini Advanced</li>
+            <li class="Website__header--list-item">For Business</li>
+            <li class="Website__header--list-item">FAQ</li>
+          </ul>
+          <button class="Website__header--btn form-btn">Sign in</button>
+        </div>
+      </header>
+      <!-- Content -->
+      <main class="Website__content">
+        <!-- 1 text -->
+        <div class="Website__content--text">
+          <div class="Website__content--text-box">
+            <h1 class="Website__content--text-heading-main">Gemini</h1>
+            <h2 class="Website__content--text-heading-primary">
+              Supercharge your creativity and productivity
+            </h2>
+            <h5 class="Website__content--text-paragraph">
+              Chat to start writing, planning, learning and more with Google AI
+              Sign in
+            </h5>
+            <button class="Website__content--text-btn form-btn">Sign in</button>
+          </div>
+        </div>
+        <!-- 2 image -->
+        <div class="Content__imgs Website__content--images">
+          <!-- one -->
+          <div class="Content__imgs--box">
+            <img
+              src="Svgs/website-img-2.webp"
+              alt=""
+              class="Content__imgs--img"
+            />
+            <div class="Content__imgs--textcontainer">
+              <div
+                class="Content__imgs--textbox one"
+                data-text="Rewrite this email draft to make it more clear and concise"
+              >
+                <img src="Svgs/user-img.jpg" alt="" />
+                <p class="Content__imgs--text">
+                  <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. -->
+                </p>
+              </div>
+              <!-- 2 -->
+              <div
+                class="Content__imgs--textbox two"
+                data-text="Sure, here is a more clear and concise version of your email draft:
+                  "
+              >
+                <img src="Svgs/Gemini-img.png" alt="" />
+                <p class="Content__imgs--text"></p>
+                <!-- The text content will be filled by typeEffect -->
+              </div>
+            </div>
+          </div>
+          <!-- two -->
+          <div class="Content__imgs--box">
+            <img
+              src="Svgs/chatbot-img.webp"
+              alt=""
+              class="Content__imgs--img"
+            />
+            <!-- 1 -->
+            <div class="Content__imgs--textcontainer">
+              <div
+                class="Content__imgs--textbox"
+                data-text="Generate an image of a futuristic car driving through an old mountain road surrounded by nature"
+              >
+                <img src="Svgs/user-img.jpg" alt="" />
+                <p class="Content__imgs--text">
+                  <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. -->
+                </p>
+              </div>
+              <!-- 2 -->
+              <div
+                class="Content__imgs--textbox two"
+                data-text="Sure, here is an image of a futuristic car driving through an old mountain road surrounded by nature:"
+              >
+                <img src="Svgs/Gemini-img.png" alt="" />
+                <p class="Content__imgs--text"></p>
+                <!-- The text content will be filled by typeEffect -->
+              </div>
+            </div>
+          </div>
+          <!-- three -->
+          <div class="Content__imgs--box">
+            <img
+              src="Svgs/chatbot-img-3.jpg"
+              alt=""
+              class="Content__imgs--img"
+            />
+            <!-- 1 -->
+            <div class="Content__imgs--textcontainer">
+              <div
+                class="Content__imgs--textbox"
+                data-text="Give me a list of 5 well-known sci-fi books and show the results in a table with descriptions"
+              >
+                <img src="Svgs/user-img.jpg" alt="" />
+                <p class="Content__imgs--text"></p>
+              </div>
+              <!-- 2 -->
+              <div
+                class="Content__imgs--textbox two"
+                data-text="Sure, here is a list of 5 well-known sci-fi books in a table with descriptions, including images:"
+              >
+                <img src="Svgs/Gemini-img.png" alt="" />
+                <p class="Content__imgs--text"></p>
+                <!-- The text content will be filled by typeEffect -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="Website__footer">
+        <ul class="Website__footer--list">
+          <li class="Website__footer--list-item">Google</li>
+          <li class="Website__footer--list-item">Privacy & Terms</li>
+        </ul>
+      </footer>
+
+      <!-- Login Form -->
+
+      <div class="signin signin-popup">
+        <form action="#" class="signin__popup-form">
+          <h1>Login to Gemini</h1>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="enter email address"
+            required
+          />
+
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="password"
+            required
+          />
+
+          <button type="submit" class="signin__popup-form__login-btn">
+            Log in
+          </button>
+          <div class="signin__popup-form__sign-up">
+            Don't have an account ?
+            <span class="signin__popup-form__sign-up-btn">Sign up</span>
+          </div>
+        </form>
+        <div class="signin__disclaimer-text">
+          <h1>Disclaimer:</h1>
+          <p class="signin__disclaimer-text--p">
+            By signing in to
+            <span class="signin__disclaimer-text--span">Gemini,</span> you agree
+            to our
+            <span class="signin__disclaimer-text--span">
+              Terms of Service
+            </span>
+            and
+            <span class="signin__disclaimer-text--span"> Privacy Policy. </span>
+            We prioritize your privacy and are dedicated to protecting your
+            personal information.Please keep your login credentials safe and do
+            not share them with anyone.
+          </p>
+          <p>
+            If you encounter any issues or suspect unauthorized access, please
+            contact the
+            <span class="signin__disclaimer-text--span"
+              >Gemini support team
+            </span>
+            immediately.
+          </p>
+          <a href="website.html">
+            <button class="signin__disclaimer-text--agreebtn form-btn">
+              Continue
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <script src="website.js"></script>
+  </body>
+</html>
