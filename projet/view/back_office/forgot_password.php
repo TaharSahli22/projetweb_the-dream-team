@@ -37,23 +37,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $stmt->execute(['token' => $token, 'email' => $email]);
 
                 // Create the password reset link
-                $resetLink = "http://yourdomain.com/reset_password.php?token=" . $token;
+                //$resetLink = "http://yourdomain.com/reset_password.php?token=" . $token;
+                $resetLink = "http://localhost/projet2/view/back_office/reset_password.php?token=" . $token;
+
 
                 // Initialize PHPMailer
                 $mail = new PHPMailer(true);
-                $mail->SMTPDebug = 2;  // Enable SMTP debugging to see detailed logs
+                
 
                 // Set up SMTP (example for Gmail)
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';  // Gmail SMTP server
                 $mail->SMTPAuth = true;
-                $mail->Username = 'your-gmail-address@gmail.com';  // Your Gmail address
-                $mail->Password = 'your-app-password';  // Your app-specific password (not the Gmail password)
+                $mail->Username = 'benahmedhayder10@gmail.com';  // Your Gmail address
+                $mail->Password = 'dgsp sreh pzwl ntvd';  // Your app-specific password (not the Gmail password)
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port = 587;
 
                 // Set the sender and recipient
-                $mail->setFrom('your-gmail-address@gmail.com', 'Your Name or Company');
+                $mail->setFrom('your-gmail-address@gmail.com', 'TerraDiCultura');
                 $mail->addAddress($email);  // Recipient's email
 
                 // Set email content
